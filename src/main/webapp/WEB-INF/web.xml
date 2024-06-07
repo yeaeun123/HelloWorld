@@ -28,6 +28,31 @@
   	<param-value>himedia</param-value>
   </context-param>
  
+ <!-- Filter 등록 :Servlet 전에 등록해야함 -->
+ <filter>
+ 	<filter-name>EncodingFilter</filter-name>
+ 	<!--  class는 패키지명도 명시해야함 -->
+ 	<filter-class>himedia.filter.EncodingFilter</filter-class> 
+ 	<!-- Filter 초기화 파라미터 -->
+ 	<init-param>
+ 		<param-name>encoding</param-name>
+ 		<param-value>UTF-8</param-value>
+ 	</init-param>
+ </filter>
+ <filter>
+ 	<filter-name>LoggingFilter</filter-name>
+ 	<filter-class>himedia.filter.LoggingFilter</filter-class>
+ </filter>
+ 
+ <!-- Filter Mapping -->
+ <filter-mapping>
+ 	<filter-name>EncodingFilter</filter-name>
+ 	<url-pattern>/*</url-pattern> <!-- 모든 요청 -->
+ </filter-mapping>
+ <filter-mapping>
+ 	<filter-name>LoggingFilter</filter-name>
+ 	<url-pattern>/*</url-pattern>
+ </filter-mapping>
  
   <!--  Servlet 등록 -->
   <servlet>

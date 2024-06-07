@@ -22,6 +22,13 @@ public class EncodingFilter implements Filter {
 		
 		logger.info("[EncodingFilter] init");
 		Filter.super.init(filterConfig);
+		// init-param으로부터 encoding 정보를 받아와서 encoding 속성을 변경
+		String encodingParam = filterConfig.getInitParameter("encoding");
+		if (encodingParam != null) {
+			encoding = encodingParam;
+			logger.info("\tinit-param으로부터 받은 인코딩:" + encodingParam);
+		}
+		logger.info("\t인코딩이 " + encoding + "으로 설정되었습니다.");
 	}
 	
 	
